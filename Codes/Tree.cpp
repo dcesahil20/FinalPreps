@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 #include <algorithm>
+
 using namespace std;
 
 template <class T>
@@ -124,6 +126,45 @@ void printTreeLevelWise(TreeNode<int>* root){
     }
 }
 
+void printTreeZigzagLevelWise(TreeNode<int>* root){
+
+    stack<TreeNode<int>*> ms;
+
+    ms.push(root);
+
+    stack<TreeNode<int>*> cs;
+
+    int level = 1;
+
+    while(ms.size()>0){
+        TreeNode<int>* tp = ms.top();
+        ms.pop();
+
+        if(level%2==0){
+            cout << tp->data << " " ;
+            for(int i=tp->children.size()-1; i>=0; i--){
+                cs.push(tp->children[i]);
+            }
+        }
+
+        else{
+            cout << tp->data << " ";
+            for(int i=0; i<tp->children.size(); i++){
+                cs.push(tp->children[i]);
+            }
+       
+        }
+        
+        if(ms.size()==0){
+            ms = cs;
+            cs = stack<TreeNode<int>*>();
+            level++;
+        }
+    }
+    cout << endl ;
+}
+
+
 void printPreOrderTraversal(TreeNode<int>* root){
     
     cout << root->data << " ";
@@ -143,6 +184,37 @@ void printPostOrderTraversal(TreeNode<int>* root){
 
     cout << root->data << " ";
 
+}
+
+void printMirrorTree(TreeNode<int>* root){
+
+    for(int i=0; i<root->children.size(); i++){
+        printMirrorTree(root->children[i]);
+    }
+
+    reverse(root->children.begin(), root->children.end());
+
+}
+
+TreeNode<int>* printRemoveLeaves(TreeNode<int>* root){
+
+    if(root==NULL)return NULL;  
+    
+    for(int i=root->children.size()-1; i>=0; i--){
+        
+        TreeNode<int>* n = root->children[i];
+        
+        if(n->children.size()==0){
+            n->children.pop_back();
+        }
+    }
+
+    
+    
+    for(int i=0; i<root->children.size(); i++){
+        printRemoveLeaves(root->children[i]);
+    }
+    return root;
 }
 
 int countNodes(TreeNode<int>* root){
@@ -231,13 +303,18 @@ int main(){
     cout << "next larger elem: " << nextLargerElement(funcNodeRoot,21)->data << endl;
 
     //printTreeRecursive(takeInputLevelWise());
+    TreeNode<int>* rmLeaf = printRemoveLeaves(funcNodeRoot);
 
+    cout << "orig: " << endl;
     printTreeLevelWise(funcNodeRoot);
+    cout << "without leaf: " << endl;
+    printTreeLevelWise(rmLeaf);
 
     cout << "NODE count : " << countNodes(funcNodeRoot) << endl;
 
     cout << "NODE count recursive : " << countNodesRecursive(funcNodeRoot) << endl;  
-
+    cout << "ZigZag Traversal " <<endl;
+    printTreeZigzagLevelWise(funcNodeRoot);
     printAtLevelK(funcNodeRoot,3);
     printPreOrderTraversal(funcNodeRoot);
     cout << endl;
@@ -246,3 +323,4 @@ int main(){
 }
 
 // 1 3 2 3 4 2 5 6 2 7 8 0 0 0 0 1 9 0
+// 1 3 2 5 6 2 3 4 1 9 2 7 8 0 2 10 11 0 0 0 0 0
