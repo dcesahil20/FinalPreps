@@ -1,14 +1,14 @@
-DAY: Tuesday
-DATE: 21 Dec 2021
+DAY: Wednesday
+DATE: 22 Dec 2021
 
 $$$$$~~~~~~~~FOR SELF CAREER~~~~~~~~$$$$$
 
 FROM BACKLOG:
-
-NEW TODAY:
     - Start BST and do questions 
     - Linked List problems continue pepcoding level 2
     - Prepare an endgame date
+
+NEW TODAY:
 
 DONE:
 
@@ -17,9 +17,10 @@ TAKEAWAY:
 $$$$$~~~~~~~~FOR SELF MENTAL HEALTH~~~~~~~~$$$$$
 
 FROM BACKLOG:
+    - Download Warren Buffet and related Investment and Finance Books on Kindle
+
 
 NEW TODAY:
-    - Download Warren Buffet and related Investment and Finance Books on Kindle
 
 DONE:
 
@@ -30,7 +31,6 @@ $$$$$~~~~~~~~FOR SELF PHYSICAL HEALTH~~~~~~~~$$$$$
 FROM BACKLOG:
 
 NEW TODAY:
-    - NIL :(
 
 DONE:
 
@@ -43,26 +43,16 @@ TAKEAWAY:
 FROM BACKLOG:
 
 NEW TODAY:
-    
 
 DONE:
-    - Connect with KB (HIGH PRIORITY)
-    - Setup terraform
-    - Merge branches
-    - Ask and do a quick setup with airflow on local machine
-    - Running dags without doing a build again? Container refers and updates DAG from local directory?
-    - Rancher on local?
-    - Related knowledge base building?
 
 TAKEAWAY:
 
 
 $$~~~~$$ NOTES FOR FUTURE $$~~~~$$
-- Syncing evernote with this text file https://github.com/liuwons/EverMark
+-
 
 
 $$~~~~$$WEEKLY ANALYSIS AND IMPROVEMENT$$~~~~$$
 
 ACTION ITEMS ADD
-V.V.Imp - 
-

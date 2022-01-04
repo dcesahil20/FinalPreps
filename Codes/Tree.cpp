@@ -271,17 +271,22 @@ TreeNode<int>* maxDataNode(TreeNode<int>* root) {
 }
 
 
+
+
 TreeNode<int>* nextLargerElement(TreeNode<int> *root, int n) {
     // Write your code here
-    
-    for(int i=0; i<root->children.size(); i++){
-        TreeNode<int>* child = nextLargerElement(root->children[i], n);
-        if(child->data > n){
-            return root;
-        }
+
+    if(root->data > n){
+        return root;
     }
     
-    return root;
+    }
+    for(int i=0; i<root->children.size(); i++){
+       nextLargerElement(root->children[i], n);
+    }
+
+    return NULL;
+    
 }
 
 int main(){
