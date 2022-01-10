@@ -292,14 +292,219 @@ pair<int, int> getMinAndMax(BinaryTreeNode<int> *root) {
 }
 
 
-vector<Node<int>*> ll;
-
 vector<Node<int>*> constructLinkedListForEachLevel(BinaryTreeNode<int> *root) {
-    // Write your code here
+    
+    vector<Node<int>*> res;
+
+    if(root==NULL){
+        return res;
+    }
+
+    queue<BinaryTreeNode<int>*> q;    
+    q.push(root);
+
+    Node<int>* headPtr = NULL;
+    Node<int>* tailPtr = NULL;
+
+    int curLevel = 1;
+    int nexLevel = 0;
+
+    while(q.size()!=0){
+        
+        BinaryTreeNode<int>* fr = q.front();
+        q.pop();
+
+        Node<int>* ll = new Node<int>(fr->data);
+
+        if(headPtr==NULL){
+            headPtr = ll;
+            tailPtr = ll;
+        }
+        else{
+            tailPtr->next = ll;
+            tailPtr = ll;
+        }
+
+        if(fr->left!=NULL){
+            q.push(fr->left);
+            nexLevel++;
+        }
+        if(fr->right!=NULL){
+            q.push(fr->right);
+            nexLevel++;
+        }
+
+        curLevel--;
+
+        if(curLevel==0){
+            res.push_back(headPtr);
+            headPtr=NULL;
+            tailPtr=NULL;
+            curLevel=nexLevel;
+            nexLevel=0;
+        }
+    }
+    return res;
+}
+
+vector<int>* longestPathA(BinaryTreeNode<int>* root) {
+	// Write your code here
+    
+     if (root == NULL) {
+        vector<int>* temp;
+        return temp;
+    }
+ 
+    // Recursive call on root->right
+    vector<int>* rightvect
+        = longestPathA(root->right);
+ 
+    // Recursive call on root->left
+    vector<int>* leftvect
+        = longestPathA(root->left);
+ 
+    // Compare the size of the two vectors
+    // and insert curren`t node accordingly
+    if (leftvect->size() > rightvect->size())
+        leftvect->push_back(root->data);
+ 
+    else
+        rightvect->push_back(root->data);
+ 
+    // Return the appropriate vector
+    return (leftvect->size() > rightvect->size()
+                ? leftvect
+                : rightvect);
+
+}
+
+vector<int> longestPath(BinaryTreeNode<int>* root)
+{
+ 
+    // If root is null means there
+    // is no binary tree so
+    // return a empty vector
+    if (root == NULL) {
+        vector<int> temp
+            = {};
+        return temp;
+    }
+ 
+    // Recursive call on root->right
+    vector<int> rightvect
+        = longestPath(root->right);
+ 
+    // Recursive call on root->left
+    vector<int> leftvect
+        = longestPath(root->left);
+ 
+    // Compare the size of the two vectors
+    // and insert current node accordingly
+    if (leftvect.size() > rightvect.size())
+        leftvect.push_back(root->data);
+ 
+    else
+        rightvect.push_back(root->data);
+ 
+    // Return the appropriate vector
+    return (leftvect.size() > rightvect.size()
+                ? leftvect
+                : rightvect);
+}
+
+void printBoundaryLeft(BinaryTreeNode<int>* root){
     if(root==NULL){
         return;
     }
 
+    if(root->left){
+        cout << root->data << " ";
+        printBoundaryLeft(root->left);
+    }
+
+    else if(root->right){
+        cout << root->data << " ";
+        printBoundaryLeft(root->right);
+    }
+}
+
+void printLeafs(BinaryTreeNode<int>* root){
+
+    if(root==NULL){
+        return;
+    }
+
+    printLeafs(root->left);
+    
+    if(!root->left && !root->right){
+        cout << root->data << " ";
+    }
+
+    printLeafs(root->right);
+
+}
+
+void printBoundaryRight(BinaryTreeNode<int>* root){
+    
+    if(root==NULL){
+        return;
+    }
+    
+    if(root->right){
+        printBoundaryRight(root->right);
+        cout << root->data << " ";
+    }
+
+    else if(root->left){
+        printBoundaryRight(root->left);
+        cout << root->data << " ";
+    }
+
+}
+
+void printBoundaryTraversal(BinaryTreeNode<int>* root){
+    
+    if(root==NULL){
+        return;
+    }
+
+    cout << root->data << " ";
+
+    printBoundaryLeft(root->left);
+    printLeafs(root->left);
+    printLeafs(root->right);
+    printBoundaryRight(root->right);
+}
+
+long long int mx = 0;
+
+long long int helper(BinaryTreeNode<int> *root, long long int *mx){
+    
+    //left poora trace, right poora trace, wapas ate hue compare(backtrack)
+
+    if(root==NULL){
+        return 0;
+    }
+    
+    long long int lsum = helper(root->left, mx);
+    long long int rsum = helper(root->right, mx);
+
+    *mx = max(*mx, lsum+rsum+root->data);
+
+    return root->data + max(lsum,rsum);
+
+    
+}
+
+long long int maximumSumLeafpath(BinaryTreeNode<int> *root)
+{
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    helper(root,&mx);
+    return mx;
 }
 
 int main(){
@@ -329,13 +534,27 @@ int main(){
 
     printBinaryTreeInorder(uinLevelWise);
 
-    pair<int,int> p = findHeightDiameter(uinLevelWise);
+    // pair<int,int> p = findHeightDiameter(uinLevelWise);
 
-    cout << "Height: " << p.first << " Diameter: " << p.second << endl;
+    // cout << "Height: " << p.first << " Diameter: " << p.second << endl;
 
-    pair<int,int> minMax = getMinAndMax(uinLevelWise);
+    // pair<int,int> minMax = getMinAndMax(uinLevelWise);
 
-    cout << "MIN: " << minMax.first << " MAX: " << minMax.second << endl;
+    // cout << "MIN: " << minMax.first << " MAX: " << minMax.second << endl;
+
+    // vector<int> m = longestPath(uinLevelWise);
+
+    // cout << "longest path is: ";
+    // for(int i=0; i<m.size(); i++){
+    //     cout << m[i] << endl;
+    // }
+
+    cout << endl;
+    cout << "Boundary Tree Traversal " << endl;
+    printBoundaryTraversal(uinLevelWise);
+    cout << endl;
+    cout << "max sum leaf path: " << maximumSumLeafpath(uinLevelWise) << endl;
+
 
 }
 

@@ -1,0 +1,14 @@
+Worked on developing a web based service oriented architecture Data Access / Data Insights Framework (DADIF) from scratch to enable the production and consumption of data in a unified way
+Enabled data customers and producers to have set of common tools to manipulate data from different backends (MySQL/Athena/S3)
+Different security levels enabled for DADIF
+Developed RESTful APIs for communication with DADIF
+Created a simple UI for easy interaction with DADIF APIs
+Worked on developing custom lambda apps (AWS lambda style)
+At core lambda is an app with thin abstraction layer that allows remote execution of core part
+Execution engine and storage, implemented different drivers that communicate and use different backends 
+Job scheduler : Integrated Apache Airflow for job orchestration
+Jobs can be configured dynamically at cadence with configuration stored inside S3
+Individual DAGs are created to run at specified cadence, retry and monitor
+Enabled functionality to add/remove/update DAGs from UI
+DADIF is configured during runtime (ENV vars, secrets, AWS policies, client specific details and permissions as defined in terraform)
+Followed rigorous documentation testing process in UAT (User Acceptance Testing) environment befor production code deployment 
