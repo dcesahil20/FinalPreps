@@ -507,6 +507,78 @@ long long int maximumSumLeafpath(BinaryTreeNode<int> *root)
     return mx;
 }
 
+void printBinaryTreePattern(BinaryTreeNode<int>* root){
+    
+    if(root==NULL){
+        return;
+    }
+
+    cout << root->data << " ";
+
+    queue<BinaryTreeNode<int>*> qL;
+    queue<BinaryTreeNode<int>*> qR;
+
+    if(root->left){
+        qL.push(root->left);
+    }
+
+    if(root->right){
+        qR.push(root->right);
+    }
+
+    while(qL.size()>0){
+        BinaryTreeNode<int>* qL_front = qL.front();
+        qL.pop();
+
+        cout << qL_front->data << " ";
+
+        if(qL_front->left){
+            qL.push(qL_front->left);
+        }
+        if(qL_front->right){
+            qL.push(qL_front->right);
+        }
+
+        BinaryTreeNode<int>* qR_front = qR.front();
+        qR.pop();
+
+        cout << qR_front->data << " ";
+
+        if(qR_front->right){
+            qR.push(qR_front->right);
+        }
+        if(qR_front->left){
+            qR.push(qR_front->left);
+        }
+
+    }
+    
+}
+
+BinaryTreeNode<int>* helper(int *input, int n, int si, int ei){
+    
+    int mid = (si + ei)/2;
+    
+    BinaryTreeNode<int>* root = new BinaryTreeNode<int>(input[mid]);
+    
+    BinaryTreeNode<int>* leftTree = helper(input, n, 0, mid-1);
+    BinaryTreeNode<int>* rightTree = helper(input, n, mid+1, n-1);
+    
+    root->left = leftTree;
+    root->right = rightTree;
+    
+    return root;
+}
+
+
+
+BinaryTreeNode<int>* constructTree(int *input, int n) {
+	// Write your code here
+    
+    return helper(input, n, 0, n-1);
+    
+}
+
 int main(){
 
     BinaryTreeNode<int>* root = new BinaryTreeNode<int>(1);
@@ -554,6 +626,8 @@ int main(){
     printBoundaryTraversal(uinLevelWise);
     cout << endl;
     cout << "max sum leaf path: " << maximumSumLeafpath(uinLevelWise) << endl;
+
+    printBinaryTreePattern(uinLevelWise);
 
 
 }
