@@ -540,7 +540,7 @@ void printBinaryTreePattern(BinaryTreeNode<int>* root){
         }
 
         BinaryTreeNode<int>* qR_front = qR.front();
-        qR.pop();
+        qR.pop();         
 
         cout << qR_front->data << " ";
 
@@ -553,6 +553,40 @@ void printBinaryTreePattern(BinaryTreeNode<int>* root){
 
     }
     
+}
+
+
+bool getPathHelper(BinaryTreeNode<int> *root, int data, vector<int> &res){
+    
+    if(root==NULL){
+        return false;
+    }
+    
+    res.push_back(root->data);
+    
+    if(root->data == data){
+        return true;
+    }
+    
+    if(getPathHelper(root->left, data, res) || getPathHelper(root->right, data, res)){
+        return true;
+    }
+    
+    res.pop_back();
+    return false;
+}
+
+vector<int> getPath(BinaryTreeNode<int> *root , int data) {
+	// Write your code here
+    vector<int> res; 
+    
+    if(root==NULL){
+        return res;
+    }
+    
+    getPathHelper(root, data, res);
+    
+    return res;
 }
 
 BinaryTreeNode<int>* helper(int *input, int n, int si, int ei){
@@ -628,6 +662,12 @@ int main(){
     cout << "max sum leaf path: " << maximumSumLeafpath(uinLevelWise) << endl;
 
     printBinaryTreePattern(uinLevelWise);
+
+    vector<int> rss = getPath(uinLevelWise, 6);
+    cout << "path binary tree" << endl;
+    for(int i=0; i<rss.size(); i++){
+        cout << rss[i] << " ";
+    }
 
 
 }

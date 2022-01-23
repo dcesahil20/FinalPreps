@@ -1,0 +1,29 @@
+https://pastebin.com/uk7TTy01
+
+Preparation
+DSA-> I've submitted 339 LC Problems [ 73 Easy 222 Medium 44 Hard ] and must have seen around 200 more problems during interview rounds
+LLD -> LLD Codes on Github | YT(G Balasubramaniam | Udit Agarwal) -- I Even coded 5-6 Problems for practice by keeping a measure of time
+HLD-> I went through Educative(dot)io's Grokking System Design PDF | Youtube (CodeKarle | TechDummies | Gaurav Sen | System Design Interviews)
+ 
+Update:
+https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/ [ my friend used this said its brilliant, I did random questions popular ones, I had immense time though ]
+focus more on Graph, DFS/BFS, Trees, DP (Leetcode sort by problem area + % of solving )
+ 
+LLD:
+Try to make at least these 3 on your own in <40 mins ==> I'd suggest Parking Lot Multilevel, Message Queue Pub-Sub & Amazon Locker System
+ 
+HLD:
+For concepts Like sharding/load balancer/types of caches, I'd suggest first going through concepts in grok_system-design pdf as it has explained those topics in a nice and crisp way, but yes I could understand those because I did those things during my job as well, if you're not, pls go through Youtube Videos first
+I did almost all HLD ==> Twitter/FB/Messenger/IG/Distributed Cache/Booking System/Rating System/Netflix/YT/Notifications System/Queing System
+
+Previous Projects:
+it can go from 15 minutes to even 45-50 minutes
+No they never dive into the exact code or the exact db schema
+explain in a crisp way the business requirements and the problem it solves
+generally they ask u to draw the HLD of the system and how it communicates with other systems
+then they ask u about what type of DB u used and the reasoning for them
+if you've used cache, why? where and which type?
+since this is assumed to be an already in prod project, they ask u about how do u monitor it and what all bugs have u run into
+what is the biggest bug u faced, what was the issue, how did u fix it
+were there any technical improvements done to the project post the initial release (the answer is always yes in my case :-P ) what and why
+if u were to go back in time and given the freedom to change something in ur approach, what would that be and why

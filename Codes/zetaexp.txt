@@ -1,0 +1,77 @@
+**Education**: B.Tech - IT From IIIT allahabad
+**YOE**: 2yrs 3 Months
+**Previous Experience**: Product Engineer in India's Largest B2B Ecommerce Startup
+
+**Preparation**
+DSA-> I've submitted 339 LC Problems [ 73 Easy 222 Medium 44 Hard ] and must have seen around 200 more problems during interview rounds
+LLD -> LLD Codes on Github | YT(G Balasubramaniam | Udit Agarwal) -- I Even coded 5-6 Problems for practice by keeping a measure of time
+HLD-> I went through Educative(dot)io's Grokking System Design PDF | Youtube (CodeKarle | TechDummies | Gaurav Sen | System Design Interviews)
+
+**How Did I Apply?**
+I had reached out the recruiter who had reached out to a friend of mine for the same position, my friend had applied via referral
+
+**Interview Process:**
+
+**Round 0 (Online Screening - 60 Minutes - 2 DSA):**
+***My friend didn't have this round but i did ( 2 reasons according to me : he was already on notice period with an offer AND/OR he was a direct employee referral )***
+
+Q1) *[LC Medium]* Very similar to https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ 
+Q2) *[LC Medium]* https://leetcode.com/problems/longest-palindromic-substring/
+Contacted the next day by the recruiter that i had cleared this round, asked for a week time for further rounds and was given the same 
+
+
+**Round 1(Problem Solving DS - 60 Minutes- 3 Questions - Elimination)**
+Interviewed by an SDE-2 with 5 years of Experience, post formal introductions he communicated that he'll ask a minimum of 2 and maximum of 3 questions based on availability of time
+
+Q1) *[LC Medium]* https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/ (I gave him a solution with stack at the first go, he smiled a bit and agreed and asked me whether i can solve it without using stack, i suggested counters and asked me to code it up]
+Q2) *[LC Medium]* https://leetcode.com/problems/longest-substring-without-repeating-characters/ ( i gave him the solution using map, he was happy with it, asked me to print the substring as well, later on asked me if i have another approach to solve this, gave me a hint its related to fixing the bounds, i told him the sliding window approach, he was happy, asked me to code up any approach i've comfortable with )
+Q3) *[LC Medium]* https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/ (Only discussed the solution since we didn't have much time, he said its okay since i've already answered the minimum required 2 questions)
+
+Overall the round went great, the interviewer stressed a lot on time and space complexity and after every solution asked me the same, also asked me if i improve the time and space complexities.
+
+Got a call from the HR, the next day  stating i've cleared this round, asked availability and scheduled it after 4 days from Round 1
+
+**Round 2 [ LLD + HLD - 90 Minutes - Elimination ]**
+Interviewed by an SDE-3 with 8 years of Experience, post formal introductions he communicated that he'll ask a minimum of 1 LLD and its HLD, if time permits one ended question as well
+
+Q1) Design a multi level parking lot (45-50Min)
+ * He asked me to first discuss and code up the entities , then asked me to assume In memory DS as DB and write other functionalities and interactions, I had used command pattern + strategy pattern + factory pattern, seeing which he asked me the reasons , asked me to go through a few scenarios (like slot booking, how will park/unpark happen, how are levels defined)
+* Next he asked me to walk me through how i'm adhering to SOLID (maybe because i uttered that word 2-3 times), later on he asked me what all changes would i do to make my code work correctly in multi threading scenario
+* They heavily focus on how u design the entites and if you know the technical lingos you're saying(SOLID + Design Patterns), he only asked me about multi threading, didn't ask me to implement the same
+
+Q2) How i'll scale this system to a global distributed system [ 15Mins ]
+* Discussions on Load Balancer, Redis, DB (He was mainly interested in how i handle large amounts of data i.e. sharding)
+* Asked me whether i'd prefer a monolith or a microservice architecture followed by  how many different microservices will i have for this system
+
+Open Ended Question: How will i handle a system where i'll have to handle Flight/Train booking with Hopping Flights type of scenario (i.e Flight someone searches flight/train from A->B but should also get an option for A->C->B if it costs less)
+
+Received a call after a week stating i've passed the interview and they'd like to schedule a 3rd Round
+
+**Round-3 [Past Experience + HLD + Cultural Fit - 60 Minutes]**
+Interviewed by the director of the team i'd be joining with ~15 years of Experience
+
+Q1) The most challenging work you've done uptill now, why and how would did u do it? Were you successfull? How do u measure you were successfull or not? Would u change something if asked to do the same project again
+
+Q2) How would I process data from a 100TB file as fast as possible, initial discussions on chunking and breaking the file, he asked me to use Map Reduce, i communicated i've never used it and have almost no context, to which he asked me to give it a try the technologies i've worked on
+
+Q3) He asked me a few questions on prometheus and kubernetes since I had worked on a project which was related to the same, Asked me how is a service deployed and other general questions
+
+This was followed by generic questions Like 
+* Why do u want to join Zeta
+* Why do u want to leave your current firm
+* What is the one quality you think that'd be a standout for u if we are to compare you with others
+
+
+**Got a call from the HR after 4 days that i was selected**
+
+Tips: 
+1) *I'd say if you're not well prepared with DS-Algo you'd still cruise through the first round if you've covered atleast all famous type of questions*
+2) ***The second round is extremely important, my friend who was contacted via referral was eliminated from this round [They asked him to code a multi threaded message broker]***
+3) *Only blabber things you know of, because the interviewers listen very carefully to catchy words like SOLID, Design Patterns, Redis,Sharding*
+
+
+Compensation : https://leetcode.com/discuss/compensation/1552519/Zeta-(Directi)-or-SDE-2-or-Accepted
+Amazon SDE 2 Experience : https://leetcode.com/discuss/interview-experience/1546933/Amazon-or-SDE2-BLR-or-Offered
+Hotstar Interview Exp: Adding Soon
+Uber Interview Exp: Ongoing Adding Soon
+
