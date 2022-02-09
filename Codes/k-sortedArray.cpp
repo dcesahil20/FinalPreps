@@ -7,7 +7,6 @@ using namespace std;
 // array in O(n logk) time.
 void sortK(int arr[], int n, int k)
 {
-     
     priority_queue<int, vector<int>, greater<int> > pq;
 
     for(int i=0; i<k; i++){
