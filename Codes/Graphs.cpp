@@ -35,6 +35,7 @@ vector<int> bfsTraversal(int V, vector<int> adj[]){
     return bfs_res;
 }
 
+
 void dfs(int node, vector<int> &res, vector<int> adj[], vector<int> &vis){
     
     res.push_back(node);
@@ -61,6 +62,36 @@ vector<int> dfsTraversal(int V, vector<int> adj[]){
     return dfs_res;
 }
 
+
+bool dfsCycleHelper(int node, int parent, vector<int> adj[], vector<int>&vis){
+    vis[node]=1;
+    for(auto i : adj[node]){
+        if(!vis[i]){
+            if(dfsCycleHelper(i, node, adj, vis)){
+                return true;
+            }
+        }
+        else if(i!=parent){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool checkCycle(int V, vector<int> adj[]){
+    
+    vector<int> vis(V+1, 0);
+    for(int i=1; i<=V; i++){
+        if(!vis[i]){
+            if(dfsCycleHelper(i, -1, adj, vis)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 int main(){
     //n vertices, e edges
     int n, e, u, v;
@@ -76,7 +107,8 @@ int main(){
     }
 
     //print vertices with edges
-    //NOTE: This fails because ye sare nodes par nahi jarha hai aur visited array ka concepot bhi nahi use kar rahe
+    //NOTE: This fails because ye sare nodes par nahi 
+    //jarha hai aur visited array ka concepot bhi nahi use kar rahe
 
     // for(int i=0; i<n+1; i++){
     //     for(int j=0; j<varr[i].size(); j++){
@@ -101,4 +133,17 @@ int main(){
         cout << i << " ";
     }
 
+    bool hasCycle = checkCycle(n, adj);
+    cout << "cycle? : "<< hasCycle << endl;
 }
+
+// 9 9
+// 1 3
+// 3 4
+// 2 5
+// 5 6
+// 5 6
+// 6 7
+// 7 8
+// 8 9 
+// 9 10
