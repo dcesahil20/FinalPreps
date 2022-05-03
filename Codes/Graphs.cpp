@@ -92,6 +92,44 @@ bool checkCycle(int V, vector<int> adj[]){
     return false;
 }
 
+bool checkCycleBFSHelper(int node, vector<int> &vis, vector<int> adj[]){
+
+    queue<pair<int, int>> q;
+    q.push({node, -1});
+    vis[node]=1;
+
+    while(!q.empty()){
+        int node = q.front().first;
+        int par = q.front().second;
+        q.pop();
+
+        for(auto i: adj[node]){
+            if(!vis[i]){
+                q.push({i,node});
+                vis[i]=1;
+            }
+            else if(i!=par){
+                return true;
+            }
+        }
+    }
+    return false;
+}   
+
+bool checkCycleBFS(int V, vector<int> adj[]){
+    
+    vector<int> vis(V+1,0);
+
+    for(int i=1; i<=V; i++){
+        if(!vis[i]){
+            if(checkCycleBFSHelper(vis[i], vis, adj)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 int main(){
     //n vertices, e edges
     int n, e, u, v;
@@ -135,6 +173,10 @@ int main(){
 
     bool hasCycle = checkCycle(n, adj);
     cout << "cycle? : "<< hasCycle << endl;
+
+    bool hasCycleBFS = checkCycleBFS(n, adj);
+    cout << "cycle? : "<< hasCycleBFS << endl;
+
 }
 
 // 9 9
